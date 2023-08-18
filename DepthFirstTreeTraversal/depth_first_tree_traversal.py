@@ -3,17 +3,17 @@ from typing import List
 
 
 def depth_first_tree_traversal(root: int, tree: Dict[int, List[int]]) -> List[int]:
-    """
-    Completes depth first tree traversal and returns visited vertices
-    Go to left side of tree, then right, then self
+    output = []
+    output.append(root)
+    dfs(output, root, tree)
+    return output[::-1]
 
-    Args:
-        root (int): root vertex
-        tree (Dict[int, List[int]]): structure of tree
-                            (number of vertex, list of two elements: child number or None)
-    """
 
-    return []
+def dfs(output, root, tree):
+    for r in tree[root][::-1]:
+        if r not in output and not (r is None):
+            output.append(r)
+            dfs(output, r, tree)
 
 
 # https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
